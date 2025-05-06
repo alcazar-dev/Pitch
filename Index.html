@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Portafolio de Proyectos</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 2rem;
+    }
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+    .project {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 1rem;
+    }
+    .project img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .project h2 {
+      font-size: 1.3rem;
+      margin-top: 0.8rem;
+    }
+    .project p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .project a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Proyectos Destacados</h1>
+  <div class="portfolio">
+
+    <div class="project">
+      <img src="https://github.com/alcazar-dev/Analisis-Multivariado-de-Contaminantes-en-el-aire---SIMA/blob/main/DistribucionCO_ZMM.gif?raw=true" alt="Análisis de contaminantes ZMM">
+      <h2>Análisis Multivariado de Contaminantes - SIMA</h2>
+      <p>Visualización y análisis estadístico de contaminantes atmosféricos clave en la Zona Metropolitana de Monterrey mediante métodos multivariados, apoyado con datos de AIRE NL.</p>
+      <a href="https://github.com/alcazar-dev/Analisis-Multivariado-de-Contaminantes-en-el-aire---SIMA" target="_blank">Ver repositorio</a>
+    </div>
+
+    <div class="project">
+      <img src="https://github.com/alcazar-dev/Restauracion-Ecologica-del-Altiplano-Mexicano/blob/main/Ruteo.gif?raw=true" alt="Ruteo restauración ecológica">
+      <h2>Optimización en Restauración Ecológica</h2>
+      <p>Desarrollo de algoritmos de ruteo (CVRP) para optimizar la restauración del matorral desértico del Altiplano Mexicano. Se emplearon modelos MIP y metaheurísticas eficientes.</p>
+      <a href="https://github.com/alcazar-dev/Restauracion-Ecologica-del-Altiplano-Mexicano" target="_blank">Ver repositorio</a>
+    </div>
+
+  </div>
+
+</body>
+</html>
