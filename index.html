@@ -1,67 +1,521 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Portafolio de Proyectos</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f7f7f7;
-      margin: 0;
-      padding: 2rem;
-    }
-    .portfolio {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2rem;
-    }
-    .project {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 1rem;
-    }
-    .project img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .project h2 {
-      font-size: 1.3rem;
-      margin-top: 0.8rem;
-    }
-    .project p {
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-    .project a {
-      display: inline-block;
-      margin-top: 0.5rem;
-      color: #0077cc;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Técnico</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .project-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .skill-tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        
+        .project-link {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .project-link:hover {
+            background: #2563eb;
+        }
+        
+        .project-hover-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            pointer-events: none;
+        }
+        
+        .project-card:hover .project-hover-content {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .hover-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        
+        .hover-section {
+            margin-bottom: 15px;
+        }
+        
+        .hover-section-title {
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+        
+        .hover-section-content {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .hover-list {
+            padding-left: 20px;
+            margin: 5px 0;
+        }
+        
+        .hover-list li {
+            margin-bottom: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .portfolio-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <h1>Proyectos Destacados</h1>
-  <div class="portfolio">
-
-    <div class="project">
-      <img src="https://github.com/alcazar-dev/Analisis-Multivariado-de-Contaminantes-en-el-aire---SIMA/blob/main/DistribucionCO_ZMM.gif?raw=true" alt="Análisis de contaminantes ZMM">
-      <h2>Análisis Multivariado de Contaminantes - SIMA</h2>
-      <p>Visualización y análisis estadístico de contaminantes atmosféricos clave en la Zona Metropolitana de Monterrey mediante métodos multivariados, apoyado con datos de AIRE NL.</p>
-      <a href="https://github.com/alcazar-dev/Analisis-Multivariado-de-Contaminantes-en-el-aire---SIMA" target="_blank">Ver repositorio</a>
+    <header>
+        <h1>Portafolio de Proyectos Técnicos</h1>
+        <p>Análisis de Competencias y Soluciones Implementadas</p>
+    </header>
+    
+    <div class="portfolio-container">
+        <!-- Proyecto 1: Análisis Multivariado de Contaminantes en el Aire -->
+        <div class="project-card">
+            <img src="https://raw.githubusercontent.com/alcazar-dev/Analisis-Multivariado-de-Contaminantes-en-el-aire---SIMA/main/Mapa_Contaminantes.png" alt="Análisis Multivariado de Contaminantes" class="project-image">
+            <div class="project-content">
+                <h3 class="project-title">Análisis Multivariado de Contaminantes en el Aire</h3>
+                <p class="project-description">Análisis geoespacial y multivariado de datos de contaminación atmosférica con Python.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">GeoPandas</span>
+                    <span class="skill-tag">PCA</span>
+                    <span class="skill-tag">LSTM</span>
+                </div>
+                <a href="https://github.com/alcazar-dev/Analisis-Multivariado-de-Contaminantes-en-el-aire---SIMA" class="project-link" target="_blank">Ver en GitHub</a>
+            </div>
+            
+            <div class="project-hover-content">
+                <h4 class="hover-title">Análisis Multivariado de Contaminantes en el Aire</h4>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Descripción</div>
+                    <div class="hover-section-content">
+                        Proyecto de análisis ambiental que integra técnicas geoespaciales, multivariadas y de aprendizaje automático para estudiar patrones de contaminación atmosférica. Incluye visualizaciones interactivas, modelado predictivo y análisis de clusters.
+                    </div>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Técnicas</div>
+                    <ul class="hover-list">
+                        <li>Programación avanzada en Python con Pandas, NumPy, Matplotlib</li>
+                        <li>Análisis geoespacial con GeoPandas (WGS84 EPSG:4326, Web Mercator EPSG:3857)</li>
+                        <li>Visualizaciones interactivas con Contextily</li>
+                        <li>Automatización de pipelines de datos</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Matemáticas/Estadísticas</div>
+                    <ul class="hover-list">
+                        <li>Análisis multivariado (PCA, Análisis Factorial)</li>
+                        <li>Pruebas estadísticas (KMO, Bartlett)</li>
+                        <li>Clustering (K-Means) con método del codo</li>
+                        <li>Correlación multivariada</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Desarrollo de Modelos</div>
+                    <ul class="hover-list">
+                        <li>Redes LSTM multicapa para predicción temporal</li>
+                        <li>Interpolación espacial (griddata cúbico)</li>
+                        <li>Validación con cross-validation (MSE, R², MAE)</li>
+                        <li>Arquitecturas para imputación de valores faltantes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Proyecto 2: Restauración Ecológica del Altiplano Mexicano -->
+        <div class="project-card">
+            <img src="https://raw.githubusercontent.com/alcazar-dev/Restauracion-Ecologica-del-Altiplano-Mexicano/main/Mapa_Restauracion.png" alt="Restauración Ecológica" class="project-image">
+            <div class="project-content">
+                <h3 class="project-title">Restauración Ecológica del Altiplano Mexicano</h3>
+                <p class="project-description">Problema de Ruteo de Vehículos (VRP) para restauración ecológica.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">GAMS</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Optimización</span>
+                    <span class="skill-tag">VRP</span>
+                </div>
+                <a href="https://github.com/alcazar-dev/Restauracion-Ecologica-del-Altiplano-Mexicano" class="project-link" target="_blank">Ver en GitHub</a>
+            </div>
+            
+            <div class="project-hover-content">
+                <h4 class="hover-title">Restauración Ecológica del Altiplano Mexicano</h4>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Descripción</div>
+                    <div class="hover-section-content">
+                        Solución de optimización combinatoria para el problema de ruteo de vehículos (VRP) aplicado a proyectos de restauración ecológica. Combina métodos exactos y heurísticos para manejar restricciones complejas de capacidad, tiempo y costos.
+                    </div>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Técnicas</div>
+                    <ul class="hover-list">
+                        <li>Modelado algebraico avanzado en GAMS</li>
+                        <li>Algoritmos heurísticos en Python</li>
+                        <li>Estructuras de datos eficientes para matrices de distancia</li>
+                        <li>Interfaces de traducción modelo-implementación</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Matemáticas</div>
+                    <ul class="hover-list">
+                        <li>Programación entera-mixta (MIP)</li>
+                        <li>Formulación Miller-Tucker-Zemlin para subrutas</li>
+                        <li>Análisis de complejidad algorítmica</li>
+                        <li>Modelado con ecuaciones diferenciales</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Soluciones Implementadas</div>
+                    <ul class="hover-list">
+                        <li>Solver exacto en GAMS (gap del 1%)</li>
+                        <li>Heurística KNN con refinamiento local</li>
+                        <li>Optimización multiobjetivo</li>
+                        <li>Sistema de penalizaciones dinámicas</li>
+                        <li>Validación cruzada de soluciones</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Proyecto 3: Análisis Topológico de Mario Kart 8 -->
+        <div class="project-card">
+            <img src="https://github.com/alcazar-dev/Analisis-Topologico-Mario-Kart/blob/main/Nodos_MarioKart.PNG?raw=true" alt="Análisis Topológico Mario Kart" class="project-image">
+            <div class="project-content">
+                <h3 class="project-title">Análisis Topológico de Mario Kart 8</h3>
+                <p class="project-description">Aplicación de TDA (Topological Data Analysis) a configuraciones de juego.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">Topología</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">KeplerMapper</span>
+                    <span class="skill-tag">Game Design</span>
+                </div>
+                <a href="https://github.com/alcazar-dev/Analisis-Topologico-Mario-Kart" class="project-link" target="_blank">Ver en GitHub</a>
+            </div>
+            
+            <div class="project-hover-content">
+                <h4 class="hover-title">Análisis Topológico de Mario Kart 8</h4>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Descripción</div>
+                    <div class="hover-section-content">
+                        Innovador análisis de equilibrio de juego aplicando Topological Data Analysis (TDA) a las configuraciones de Mario Kart 8. Identifica patrones ocultos y relaciones complejas entre parámetros de rendimiento mediante técnicas topológicas avanzadas.
+                    </div>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Técnicas</div>
+                    <ul class="hover-list">
+                        <li>Procesamiento avanzado con pandas/numpy</li>
+                        <li>Aprendizaje no supervisado</li>
+                        <li>Visualizaciones multidimensionales</li>
+                        <li>Pipeline de datos con submuestreo estratificado</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Matemáticas</div>
+                    <ul class="hover-list">
+                        <li>Análisis Topológico de Datos (TDA)</li>
+                        <li>Cálculo de homología persistente (H₀, H₁, H₂)</li>
+                        <li>Reducción de dimensionalidad con PCA</li>
+                        <li>Métricas de persistencia</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Innovación Metodológica</div>
+                    <ul class="hover-list">
+                        <li>Integración de estadística y topología</li>
+                        <li>Teoría de grafos para análisis de equilibrio</li>
+                        <li>Extracción de insights no triviales</li>
+                        <li>Validación cruzada de estructuras topológicas</li>
+                        <li>Bootstrapping para análisis de estabilidad</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Proyecto 4: Optimización de Rutas: Algoritmos Bioinspirados -->
+        <div class="project-card">
+            <img src="https://github.com/alcazar-dev/Optimizacion-de-rutas-Algoritmo-Genetico/blob/main/Seleccion_Rutas_Genetico.png?raw=true" alt="Optimización de Rutas" class="project-image">
+            <div class="project-content">
+                <h3 class="project-title">Optimización de Rutas: Algoritmos Bioinspirados</h3>
+                <p class="project-description">Algoritmos Genéticos y Colonia de Hormigas para problemas de ruteo.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">Algoritmos Genéticos</span>
+                    <span class="skill-tag">ACO</span>
+                    <span class="skill-tag">Optimización</span>
+                    <span class="skill-tag">Geoespacial</span>
+                </div>
+                <a href="https://github.com/alcazar-dev/Optimizacion-de-rutas-Algoritmo-Genetico" class="project-link" target="_blank">Ver en GitHub</a>
+            </div>
+            
+            <div class="project-hover-content">
+                <h4 class="hover-title">Optimización de Rutas: Algoritmos Bioinspirados</h4>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Descripción</div>
+                    <div class="hover-section-content">
+                        Implementación comparativa de algoritmos bioinspirados (Algoritmos Genéticos y Colonia de Hormigas) para resolver problemas complejos de ruteo (TSP). Incluye procesamiento geoespacial avanzado y técnicas de paralelización para mejorar el rendimiento.
+                    </div>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Técnicas</div>
+                    <ul class="hover-list">
+                        <li>Algoritmos evolutivos con operadores especializados</li>
+                        <li>Sistema ACO con múltiples colonias paralelas</li>
+                        <li>Procesamiento geoespacial avanzado</li>
+                        <li>Framework de benchmarking</li>
+                        <li>Paralelización a nivel de algoritmo</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Matemáticas</div>
+                    <ul class="hover-list">
+                        <li>Modelado probabilístico avanzado</li>
+                        <li>Sistemas de feromonas (τᵢⱼ = (1-ρ)τᵢⱼ + ΣΔτᵢⱼ)</li>
+                        <li>Heurísticas constructivas con visibilidad ponderada</li>
+                        <li>Teoría de grafos para optimización</li>
+                        <li>Indicadores de diversidad genética</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Desarrollo de Soluciones</div>
+                    <ul class="hover-list">
+                        <li>Implementación paralela modular (GA y ACO)</li>
+                        <li>Métricas multidimensionales de evaluación</li>
+                        <li>Geovisualización con Geopandas</li>
+                        <li>Control de parámetros adaptativos</li>
+                        <li>Población estructurada (modelo isla)</li>
+                        <li>Sistema híbrido GA-ACO</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Proyecto 5: Clasificación de Imágenes con Vision Transformer (ViT) -->
+        <div class="project-card">
+            <img src="https://github.com/alcazar-dev/Clasificaci-n-de-Im-genes-con-Vision-Transformer-ViT-/blob/main/Clasificacion_ViT.png?raw=true" alt="Vision Transformer" class="project-image">
+            <div class="project-content">
+                <h3 class="project-title">Clasificación de Imágenes con ViT</h3>
+                <p class="project-description">Implementación de Vision Transformer para clasificación de imágenes.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">Transformers</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">Computer Vision</span>
+                </div>
+                <a href="https://github.com/alcazar-dev/Clasificaci-n-de-Im-genes-con-Vision-Transformer-ViT-" class="project-link" target="_blank">Ver en GitHub</a>
+            </div>
+            
+            <div class="project-hover-content">
+                <h4 class="hover-title">Clasificación de Imágenes con Vision Transformer (ViT)</h4>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Descripción</div>
+                    <div class="hover-section-content">
+                        Implementación avanzada de arquitecturas transformer adaptadas a visión por computadora. El modelo procesa imágenes como secuencias de parches, aplicando mecanismos de atención para capturar relaciones espaciales complejas, logrando alta precisión en tareas de clasificación.
+                    </div>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Técnicas</div>
+                    <ul class="hover-list">
+                        <li>Implementación de ViT con TensorFlow/Keras</li>
+                        <li>Capas personalizadas para procesamiento de parches</li>
+                        <li>Mecanismos de atención multi-cabeza (4 cabezas)</li>
+                        <li>Aumento de datos avanzado</li>
+                        <li>Optimización de rendimiento</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Matemáticas</div>
+                    <ul class="hover-list">
+                        <li>Multi-Head Attention con proyecciones matriciales</li>
+                        <li>Normalización por capas y skip connections</li>
+                        <li>Optimización con AdamW (lr=0.001)</li>
+                        <li>Función de activación GELU</li>
+                        <li>Regularización estratificada (dropout 0.1-0.5)</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Ingeniería de Modelo</div>
+                    <ul class="hover-list">
+                        <li>Arquitectura ViT con 8 capas transformer</li>
+                        <li>Hiperparámetros optimizados: parche 6x6, proyección 64</li>
+                        <li>Redimensionamiento estratégico de imágenes</li>
+                        <li>Pipeline con early stopping adaptativo</li>
+                        <li>Sistema de visualización avanzada</li>
+                        <li>Evaluación exhaustiva con múltiples métricas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Proyecto 6: Análisis Topológico en Estadísticas de Fútbol -->
+        <div class="project-card">
+            <img src="https://github.com/alcazar-dev/Practicas-Topolog-a-estadisticas-futbol/blob/main/Nodos_fut.PNG?raw=true" alt="Análisis Topológico Fútbol" class="project-image">
+            <div class="project-content">
+                <h3 class="project-title">Análisis Topológico en Estadísticas de Fútbol</h3>
+                <p class="project-description">TDA aplicado a datos deportivos para identificar patrones tácticos.</p>
+                <div class="project-skills">
+                    <span class="skill-tag">Topología</span>
+                    <span class="skill-tag">Deportes</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Análisis de Datos</span>
+                </div>
+                <a href="https://github.com/alcazar-dev/Practicas-Topolog-a-estadisticas-futbol" class="project-link" target="_blank">Ver en GitHub</a>
+            </div>
+            
+            <div class="project-hover-content">
+                <h4 class="hover-title">Análisis Topológico en Estadísticas de Fútbol</h4>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Descripción</div>
+                    <div class="hover-section-content">
+                        Aplicación innovadora de Topological Data Analysis (TDA) para estudiar patrones tácticos en estadísticas de fútbol. El proyecto revela estructuras ocultas en datos de alto rendimiento deportivo, permitiendo análisis evolutivo de tácticas y estrategias.
+                    </div>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Técnicas</div>
+                    <ul class="hover-list">
+                        <li>Integración de múltiples fuentes de datos</li>
+                        <li>Pipeline topológico personalizado (Mapper)</li>
+                        <li>Visualizaciones interactivas con tooltips</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Competencias Matemáticas</div>
+                    <ul class="hover-list">
+                        <li>Escalado robusto (RobustScaler)</li>
+                        <li>Análisis topológico para alta dimensión</li>
+                        <li>Espacios de lentes combinando PCA y tiempo</li>
+                    </ul>
+                </div>
+                
+                <div class="hover-section">
+                    <div class="hover-section-title">Análisis Avanzado</div>
+                    <ul class="hover-list">
+                        <li>Detección de patrones evolutivos tácticos</li>
+                        <li>Métricas de grafo para caracterización</li>
+                        <li>Integración de eventos contextuales</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="project">
-      <img src="https://github.com/alcazar-dev/Restauracion-Ecologica-del-Altiplano-Mexicano/blob/main/Ruteo.gif?raw=true" alt="Ruteo restauración ecológica">
-      <h2>Optimización en Restauración Ecológica</h2>
-      <p>Desarrollo de algoritmos de ruteo (CVRP) para optimizar la restauración del matorral desértico del Altiplano Mexicano. Se emplearon modelos MIP y metaheurísticas eficientes.</p>
-      <a href="https://github.com/alcazar-dev/Restauracion-Ecologica-del-Altiplano-Mexicano" target="_blank">Ver repositorio</a>
-    </div>
-
-  </div>
-
 </body>
 </html>
